@@ -1,6 +1,10 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Meme } from "./components/Meme";
+import { Fragment } from 'react';
+import GoTopButton from './components/GoTopButton';
+import { Content, Heading } from './components/ButtonStyles';
+
 
 const objectToQueryParam = obj => {
   const params = Object.entries(obj).map(([key, value]) => `${key}=${value}`);
@@ -8,6 +12,7 @@ const objectToQueryParam = obj => {
 };
 
 function App() {
+  
   const [templates, setTemplates] = useState([]);
   const [template, setTemplate] = useState(null);
   const [topText, setTopText] = useState('');
@@ -25,14 +30,19 @@ function App() {
     <div>
       <img src={meme} alt="custom meme" />
     </div>
+    
     );  
 }
   
   return (
-    <div className="App">
-      <h1>Meme Generator!</h1> 
+  <div className="App">
+      <Fragment>
+      <Heading>Meme Generator!</Heading> 
+      <Content />
+      <GoTopButton />
+      </Fragment>
       {template && (
-      <form onSubmit={async e => {
+    <form onSubmit={async e => {
         e.preventDefault()
         const params = {
           template_id: template.id,
@@ -52,20 +62,20 @@ function App() {
           }}
         >
       <Meme template={template} /> 
-      <input placeholder='top text' 
+      <input placeholder='Top text' 
       value={topText} 
       onChange={e => setTopText(e.target.value)} />
-      <input placeholder='bottom text' 
+      <input placeholder='Bottom text' 
       value={bottomText} 
       onChange={e => setBottomText(e.target.value)}/>
-      <button type="submit" >create meme</button>
+      <button type="submit" >Create Meme</button>
       </form>
   )}
       
       {!template && 
       templates.map(template => {
         return (
-          <Meme 
+          <Meme key={template.id}
           template={template}
           onClick={() => {
             setTemplate(template);
@@ -73,9 +83,15 @@ function App() {
           />
         );
       })}
-      <button class="buttonStyle">
-        Back</button>
+    <div className="buttonStyle">
+      <button onClick={() => window.location.reload(false)}>Go Back</button>
     </div>
+
+      <footer className="footerStyle">Built by Umesh - Juno 2023
+      </footer>
+
+  </div>
+    
   );
 }
 

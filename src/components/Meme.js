@@ -2,8 +2,8 @@ import React from "react";
 
 export const Meme = ({ template, onClick }) => {
   return (
-    <img
-      style={{ width: 150 }}
+    <img 
+      style={{ width: 300 }}
       key={template.id}
       src={template.url}
       alt={template.name}

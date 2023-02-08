@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+background-color: lightblue;
 
 }
 
@@ -17,9 +18,12 @@ code {
 
 h1{
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: blueviolet;
+  color: green;
   text-transform: uppercase;
   text-decoration: underline;
+  margin-bottom: 80px;
+  margin-top: 50px;
+  font-size: 52px;
 }
 
 
