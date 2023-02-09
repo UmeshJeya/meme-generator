@@ -14,7 +14,7 @@ position: fixed;
 width: 100%;
 bottom: 10px;
 height:40px;
-font-size: 3.5rem;
+font-size: 3rem;
 z-index: 1;
 cursor: pointer;
 color: green;
