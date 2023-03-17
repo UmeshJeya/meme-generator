@@ -18,9 +18,21 @@ function App() {
   const [topText, setTopText] = useState('');
   const [bottomText, setBottomText] = useState('');
   const [meme, setMeme] = useState(null);
+  const [isError, setError] = useState(false);
+  const [isLoading, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    fetch('https://api.imgflip.com/get_memes').then(x => x.json().then(response => setTemplates(response.data.memes))
+    fetch('https://api.imgflip.com/get_memes')
+    .then(x => x.json()
+    .then(
+      (response) => {
+      setTemplates(response.data.memes)
+    },
+    (error) => {
+      setIsLoaded(true);
+      setError(error);
+        }
+    )
     );
   
   }, []);
@@ -79,6 +91,11 @@ function App() {
           template={template}
           onClick={() => {
             setTemplate(template);
+          }}
+          onKeyDown={(event) => {
+            if(event.code === 'Enter') {
+              setTemplate(template)
+            }
           }}
           />
         );
