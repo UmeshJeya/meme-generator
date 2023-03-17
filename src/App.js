@@ -29,8 +29,8 @@ function App() {
       setTemplates(response.data.memes)
     },
     (error) => {
-      setIsLoaded(true);
-      setError(error);
+      // setIsLoaded(true);
+      // setError(error);
         }
     )
     );
